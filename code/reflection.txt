@@ -6,3 +6,6 @@ selectors, sibling selector, inner_text, attribute, headless browser, waiting fo
 JavaScript, crawling, pagination, read_html, melt, fuzzy matching, normalization,
 threshold, human in the loop, merge indicator, gap analysis), and make it
 actionable.
+
+Through completing this assingment I learned a lot about writing functions, some that we have done before, and using different selectors to help me throughout. I incorporated information I have learned through other classes to help me along with the css, class id and sibling tags to help with styling. After doing this I used the pd.read_html to melt and turn the columns into rows for user view. 
+I struggled the most in this assignment with the Canal Street section, specifically scrape_canal. I was confused looking through the menu and all the items and prices for each of the products. I had to ask Claude to help me understand some of these parts. 
