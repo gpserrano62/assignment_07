@@ -155,7 +155,8 @@ def match_items(menus: pd.DataFrame, decisions: pd.DataFrame) -> pd.DataFrame:
     pool = dict(zip(ours["item"], ours["kind"]))
     answers = {(r["cafe"], r["item"]): r["matched_to"]
                for r in decisions.to_dict("records")}
-    rivals = menus[menus["cafe"] != OUR_CAFE][["cafe", "item", "kind"]].drop_duplicates()
+    theirs = menus[menus["cafe"] != OUR_CAFE]
+    rivals = theirs[["cafe", "item", "kind"]].drop_duplicates()
 
     rows = []
     for cafe, item, kind in rivals.itertuples(index=False):
@@ -183,10 +184,8 @@ def match_items(menus: pd.DataFrame, decisions: pd.DataFrame) -> pd.DataFrame:
             "matched_to": matched_to, "score": score, "suggestions": suggestions,
         })
 
-    return pd.DataFrame(
-        rows,
-        columns=["cafe", "item", "kind", "status", "matched_to", "score", "suggestions"],
-    )
+    columns = ["cafe", "item", "kind", "status", "matched_to", "score", "suggestions"]
+    return pd.DataFrame(rows, columns=columns)
 
 
 def record_decision(decisions: pd.DataFrame, cafe: str, item: str,

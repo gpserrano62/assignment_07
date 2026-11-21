@@ -107,13 +107,16 @@ with prices_tab:
 
     products = st.multiselect("Products", sorted(comparison["canonical"].unique()),
                               key="products", placeholder="All products")
-    shown = comparison[comparison["canonical"].isin(products)] if products else comparison
+    shown = comparison
+    if products:
+        shown = comparison[comparison["canonical"].isin(products)]
     st.dataframe(shown, hide_index=True)
-    st.caption("our_position compares our price to the rivals' lowest, average and highest price.")
+    st.caption("our_position compares our price to the rivals' "
+                "lowest, average and highest price.")
+
 
 with gaps_tab:
     st.subheader("Only them — what we don't sell yet")
     st.dataframe(gaps[gaps["where"] == "only them"], hide_index=True)
     st.subheader("Only us — what sets us apart")
     st.dataframe(gaps[gaps["where"] == "only us"], hide_index=True)
-

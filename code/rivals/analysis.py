@@ -150,4 +150,5 @@ def gap_analysis(menus: pd.DataFrame) -> pd.DataFrame:
 
     merged = merged.sort_values(["order", "rivals", "canonical"],
                                 ascending=[True, False, True])
-    return merged[["canonical", "kind", "where", "rivals", "sold_by"]].reset_index(drop=True)
+    columns = ["canonical", "kind", "where", "rivals", "sold_by"]
+    return merged[columns].reset_index(drop=True)
